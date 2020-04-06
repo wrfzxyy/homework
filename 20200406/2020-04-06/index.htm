@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    .shopBox {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    .navList {
+        background-color: bisque;
+        display: flex;
+
+    }
+
+    .navList p {
+        width: 50px;
+        line-height: 38px;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        width: 100%;
+    }
+
+    ul li {
+        margin-left: 10px;
+        line-height: 38px;
+        margin-right: 20px;
+    }
+
+    .shopList {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .shopList div {
+        border: 1px solid gray;
+        width: 17.8%;
+        margin-right: 1%;
+        margin-top: 15px;
+        padding: 5px;
+        transition: all .3s;
+
+    }
+
+    .shopList div:hover{
+        transform: translate(0,2px);
+        box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .shopList div:nth-child(5n) {
+        margin-right: none;
+    }
+
+    .shopList img {
+        width: 100%;
+    }
+
+    .shopList h2 {
+        margin-bottom: 12px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .shopList p {
+        margin-bottom: 12px;
+    }
+</style>
+
+<body>
+    <section class="shopBox">
+        <nav class="navList">
+            <p>排序</p>
+            <ul>
+                <li><a href="##">价格</a></li>
+                <li><a href="##">销量</a></li>
+                <li><a href="##">时间</a></li>
+            </ul>
+        </nav>
+        <div class="shopList">
+            <div class="shopcard">
+                <img src="1.jpg" alt="">
+                <h2>名称</h2>
+                <p>价格:$</p>
+                <p>销量:</p>
+                <p>时间:</p>
+            </div>
+          
+        </div>
+    </section>
+
+   
+    
+</body>
+
+
+</html>
+<script>
+    let shopModule=(function(){
+ let navList=document.querySelectorAll('li'),
+ shopList=document.querySelector('.shopList'),
+ data=null;
+
+ let getData=function getData(){
+     let xhr=new XMLHttpRequest();
+     xhr.open('get','json/product.json',false);
+     xhr.onreadystatechange=()=>{
+         if(xhr.readyState===4&&xhr.status===200){
+             data=JSON.parse(xhr.responseText)
+         }
+     }
+     xhr.send();
+ }
+  
+ let render=function render(){
+     let str=``;
+     data.forEach(item=>{
+         str+=`<div class="shopcard">
+         <img src=${item.img} alt="">
+         <h2>${item.title}</h2>
+         <p>价格:${item.price}</p>
+         <p>销量:${item.hot}</p>
+         <p>时间:${item.time}</p>
+     </div>`;
+     });
+     shopList.innerHTML=str;
+ }
+
+ let clear=function clear(){
+     [].forEach.call(navList,item=>{
+        if(this!==item){
+            item.flag=-1;
+        }
+     })
+        
+ }
+
+ let handle=function handle(){
+     [].forEach.call(navList,(item,index)=>{
+         item.flag=-1;
+         item.onclick=function(){
+             this.flag*=-1;
+             clear.call(this);
+             let char="price";
+             index===1?char="hot":null;
+             index===2?char="time":null;
+             data.sort((a,b)=>{
+                 a=String(a[char]).replace(/-/g,"");
+                 b=String(b[char]).replace(/-/g,"");
+                 return (a-b)*this.flag;
+             });
+             render();
+         }
+     })
+
+ }
+return{
+    init(){
+        getData();
+        render();
+        handle();
+    }
+}
+})();
+shopModule.init();
+</script>
