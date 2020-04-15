@@ -1,0 +1,44 @@
+body,html{
+    background-color: burlywood;
+}
+
+section{
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: darkkhaki;
+    width: 900px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.column{ 
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: lightskyblue;
+}
+
+.card{
+    width: 275px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: lightpink;
+}
+
+.lazy{
+    background: url('../images/default.gif') no-repeat center center lightslategray;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s linear;
+}
+
+p{
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 15px;
+}
