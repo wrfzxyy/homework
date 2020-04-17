@@ -1,0 +1,45 @@
+
+/* 我们自己设置的样式因为样式优先级的问题不能覆盖默认的BT样式，此时我们需要我们写的样式的优先级最高 使用 ！important*/
+.container{
+    padding: 0 !important;
+}
+
+@media(min-width:768px){
+    .container{
+        max-width: 960px !important;
+    }
+}
+
+.navbar-nav{
+    flex-direction: row;
+}
+
+.nav-link{
+padding: 0 .5rem !important;
+}
+
+.navbar-collapse{
+    flex-basis: auto;
+}
+
+.productBxo{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;  
+}
+
+.productBxo .card{
+    margin-bottom: 10px;
+    width: 19% !important;
+    margin-right:1% ;
+}
+
+.card:nth-last-child(1){
+    margin-right: 0 ;
+}
+
+.card-title{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
