@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            opacity: 1;
+            background-color: red;
+            height: 100px;
+            width: 100px;
+        }
+
+        #box2 {
+            opacity: 1;
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            margin-top: 1500px;
+        }
+
+        .btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 80px;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <button class="btn">回到顶部</button>
+    <script>
+        let box = document.querySelector('#box'),
+            box2 = document.querySelector('#box2'),
+            btn = document.querySelector('.btn')
+
+
+        function fadeIn(element) {
+            element.onclick = function () {
+                let timer = setInterval(() => {
+                    let num = getComputedStyle(element)['opacity'];
+                    num-= 1 / (1000 / 100);
+                    if (num < 0) {
+                        num = 0;
+                        clearInterval(timer)
+                    }
+                    element.style.opacity = num;
+                }, 100)
+            }
+        }
+        fadeIn(box);
+        fadeIn(box2);
+
+      let HTML=document.documentElement;
+      window.onscroll=function(){
+          if(HTML.scrollTop>100){
+              btn.style.display='block'
+          } else{
+            btn.style.display='none'
+          }
+      }
+
+      btn.onclick=function(){
+          let ws=HTML.scrollTop,
+          m=ws/(1000/50);
+          let timer=setInterval(()=>{
+              ws-=m;
+              if(ws<=0){
+                  HTML.scrollTop=0;
+                  clearInterval(timer);
+              }
+              HTML.scrollTop=ws;
+          },50)
+      }
+
+
+    </script>
+</body>
+
+</html>
