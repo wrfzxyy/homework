@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@w: 600px;
+@h: 400px;
+
+#box {
+    width: @w;
+    height: @h;
+    margin: 30px auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+
+    >.list {
+        overflow: hidden;
+        width: @w*6;
+        position: absolute;
+
+        >li {
+            float: left;
+            width: @w;
+            height: @h;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        >li:nth-child(2n) {
+            background-color: red;
+        }
+
+        >li:nth-child(2n+1) {
+            background-color: gold;
+        }
+
+        }
+    #btn {
+      position: absolute;
+      bottom: 20px;
+      width:220px;
+      transform:translate(160px) ;
+      li{
+        float: left;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: white;
+        margin-right: 20px;
+      }
+      li:hover{
+        background-color: black;
+      }
+      li:nth-child(6){
+        margin: 0;
+      }
+    }
+        .btn_box{
+            position: absolute;
+            width: 100%;
+            top:50%;
+            transform: translateY(-50%);
+            // display: none;
+            >div{
+              width: 30px;
+              height: 50px;
+              background: rgba(0,0,0,0.5);
+              line-height: 50px;
+              text-align: center;
+              color:white;
+            }
+            .left_btn{
+              float: left;
+            }
+            .right_btn{
+              float: right;
+            }
+          }
+    }
+

@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#box {
+  width: 600px;
+  height: 400px;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  position: relative;
+}
+#box > .list {
+  overflow: hidden;
+  width: 3600px;
+  position: absolute;
+}
+#box > .list > li {
+  float: left;
+  width: 600px;
+  height: 400px;
+}
+#box > .list > li img {
+  height: 100%;
+  width: 100%;
+}
+#box > .list > li:nth-child(2n) {
+  background-color: red;
+}
+#box > .list > li:nth-child(2n+1) {
+  background-color: gold;
+}
+#box #btn {
+  position: absolute;
+  bottom: 20px;
+  width: 220px;
+  transform: translate(160px);
+}
+#box #btn li {
+  float: left;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 20px;
+}
+#box #btn li:hover {
+  background-color: black;
+}
+#box #btn li:nth-child(6) {
+  margin: 0;
+}
+#box .btn_box {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#box .btn_box > div {
+  width: 30px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  line-height: 50px;
+  text-align: center;
+  color: white;
+}
+#box .btn_box .left_btn {
+  float: left;
+}
+#box .btn_box .right_btn {
+  float: right;
+}

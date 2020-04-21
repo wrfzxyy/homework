@@ -42,9 +42,9 @@
 
 
         function fadeIn(element) {
+            let num = getComputedStyle(element)['opacity'];
             element.onclick = function () {
-                let timer = setInterval(() => {
-                    let num = getComputedStyle(element)['opacity'];
+                let timer = setInterval(() => {   
                     num-= 1 / (1000 / 100);
                     if (num < 0) {
                         num = 0;
