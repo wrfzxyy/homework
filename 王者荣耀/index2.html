@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let url = "http://www.zhufengpeixun.cn/?lx=1&from=wx#video";
+      
+
+
+        String.prototype.queryURLParams = function queryURLParams(value) {
+            let obj = {
+                // _HASH:video
+
+            };
+            this.replace(/#([^#$&=?]+)/, (...[_, $1]) => obj['_HASH'] = $1);
+
+            this.replace(/([^#&?=]+)=([^#&?=]+)/g, function(_,$1,$2){
+                               console.log(_,$1,$2)
+                               obj[$1]=$2
+            });
+            console.log(obj)
+
+            return obj[value]
+        }
+
+        console.log(url.queryURLParams("from")); //=>"wx"
+        console.log(url.queryURLParams("_HASH")); //=>"video"
+    </script>
+</body>
+
+</html>
